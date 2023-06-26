@@ -18,7 +18,7 @@ if __name__ == '__main__':
     consumer = Consumer(config)
 
     # Subscribe to topic
-    topic = "poems"
+    topic = "cdm-livelogs"
     consumer.subscribe([topic])
 
     # Poll for new messages from Kafka and print them.
@@ -31,7 +31,8 @@ if __name__ == '__main__':
                 print("ERROR: %s".format(msg.error()))
             else:
                 # Extract the (optional) key and value, and print.
-                print("Consumed event from topic {topic}: key = {key:12} value = {value:12}".format(topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
+                print("Consumed event from topic {0}: key = {key:12} value = {value:12}".format(topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
+                print("junk")
     except KeyboardInterrupt:
         pass
     finally:
